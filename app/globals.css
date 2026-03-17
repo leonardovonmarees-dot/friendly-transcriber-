@@ -1,0 +1,251 @@
+:root {
+  --bg: #f5efe4;
+  --bg-deep: #f0dfc7;
+  --card: rgba(255, 252, 246, 0.84);
+  --line: rgba(86, 57, 24, 0.14);
+  --text: #2c1d11;
+  --muted: #6c5645;
+  --accent: #cf5f2c;
+  --accent-strong: #9d4318;
+  --error: #aa382b;
+  --shadow: 0 20px 50px rgba(76, 43, 13, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.9), transparent 35%),
+    linear-gradient(135deg, var(--bg), var(--bg-deep));
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text);
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.shell {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 40px 20px 72px;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.hero-copy,
+.hero-card,
+.panel,
+.result-card {
+  border: 1px solid var(--line);
+  background: var(--card);
+  backdrop-filter: blur(18px);
+  box-shadow: var(--shadow);
+  border-radius: 28px;
+}
+
+.hero-copy {
+  padding: 40px;
+}
+
+.hero-copy h1 {
+  margin: 14px 0;
+  font-size: clamp(2.4rem, 5vw, 4.6rem);
+  line-height: 0.96;
+  letter-spacing: -0.05em;
+}
+
+.hero-copy p,
+.metric span,
+.actions p,
+label,
+.upload-subtitle {
+  color: var(--muted);
+}
+
+.hero-card {
+  display: grid;
+  gap: 16px;
+  padding: 24px;
+}
+
+.metric {
+  padding: 20px;
+  border-radius: 22px;
+  background: rgba(255, 248, 239, 0.9);
+  border: 1px solid rgba(86, 57, 24, 0.08);
+}
+
+.metric strong,
+.upload-title,
+.result-header h2 {
+  display: block;
+  color: var(--text);
+}
+
+.eyebrow {
+  display: inline-flex;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(207, 95, 44, 0.12);
+  color: var(--accent-strong);
+  font-size: 0.84rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.panel {
+  margin-top: 24px;
+  padding: 28px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.upload-zone,
+label {
+  display: grid;
+  gap: 10px;
+}
+
+.upload-zone {
+  position: relative;
+  min-height: 180px;
+  padding: 24px;
+  border-radius: 24px;
+  border: 1.5px dashed rgba(157, 67, 24, 0.35);
+  background:
+    linear-gradient(180deg, rgba(255, 250, 244, 0.92), rgba(245, 228, 207, 0.82)),
+    rgba(255, 255, 255, 0.7);
+  justify-content: center;
+}
+
+.upload-zone input[type="file"] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  border-radius: 16px;
+  border: 1px solid rgba(86, 57, 24, 0.15);
+  background: rgba(255, 255, 255, 0.7);
+  padding: 14px 16px;
+  color: var(--text);
+}
+
+textarea {
+  resize: vertical;
+}
+
+.full-width,
+.actions,
+.result-card {
+  grid-column: 1 / -1;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+button {
+  border: 0;
+  border-radius: 999px;
+  padding: 14px 24px;
+  font-weight: 700;
+  color: #fff9f2;
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  cursor: pointer;
+  transition:
+    transform 180ms ease,
+    opacity 180ms ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+button:disabled {
+  opacity: 0.7;
+  cursor: progress;
+}
+
+button.secondary {
+  color: var(--accent-strong);
+  background: rgba(207, 95, 44, 0.12);
+}
+
+.feedback,
+.result-card {
+  margin-top: 24px;
+}
+
+.feedback {
+  padding: 16px 18px;
+  border-radius: 18px;
+}
+
+.feedback.error {
+  background: rgba(170, 56, 43, 0.08);
+  color: var(--error);
+}
+
+.result-card {
+  padding: 24px;
+}
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+}
+
+pre {
+  margin: 20px 0 0;
+  padding: 18px;
+  border-radius: 20px;
+  background: rgba(44, 29, 17, 0.92);
+  color: #fff8ef;
+  overflow: auto;
+  white-space: pre-wrap;
+}
+
+@media (max-width: 860px) {
+  .hero,
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .actions,
+  .result-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
